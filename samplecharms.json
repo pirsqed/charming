@@ -1,0 +1,36 @@
+{
+    "Accuracy":
+    {
+        "Time's Sure Hand":
+        {
+            "name": "Time's Sure Hand",
+            "description": "The Solar feels the flow of essance through time and knows her target's next move before her target does. This Charm allows the Solar to complete an aim action instantly and withering attacks made with this charm ignore the target's soak.",
+            "ability": "Accuracy",
+            "ability_req": "Accuracy 5",
+            "essence_req": "Essence 2",
+            "cost": "1m, 1wp;",
+            "type": "Reflexive",
+            "keywords": "Decisive-only",
+            "duration": "Instant",
+            "pre_reqs": "None",
+            "page": "257"
+        },
+    },
+    "Bravado":
+    {
+        "Member Measuring":
+        {
+            "name": "Member Measuring",
+            "description": "This charm supplements an instill intimacy aciton. The Solar calls out an ability or physical or mental characteristic of her target and describes it as lacking compared to her own or another person's. The solar gains double 9s on social rolls to instill a submissive intimacy to the Solar, or the other person the comparision was made against.",
+            "ability": "Bravado",
+            "ability_req": "Bravado 5",
+            "essence_req": "Essence 2",
+            "cost": "3m;",
+            "type": "Simple",
+            "keywords": "Supplemental",
+            "duration": "Instant",
+            "pre_reqs": "Agrandized Ambition",
+            "page": "420"
+        },
+    }
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Charming - Exalted 3e Charm Helper</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+	<style>
+
+
+		@media print
+		{
+			.no-print, .no-print *
+			{
+				display: none !important;
+			}
+		}
+
+		.selector_container{
+			height: 350px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+		}
+
+		.charm_selector{
+			min-width: 215px;
+			flex-grow: 0;
+			flex-shrink: 1;
+		}
+
+		.charm_list{
+			flex-grow: 8;
+			flex-shrink: 5;
+			min-width: 50px;
+			height: 340px;
+			overflow-x: hidden;
+			overflow-y: auto;
+			border: 2px ridge Gold;
+			background-color: AntiqueWhite;
+		}
+
+		.card_preview{
+			flex-grow: 0;
+			flex-shrink: 1;
+			display: relative;
+			width: 450px;
+			height: 340px;
+			overflow: hidden;
+			border: 2px ridge Gold;
+			background-color: AntiqueWhite;
+		}
+
+		.short_charm{
+			border-bottom: 4px solid Gold;
+			position: relative;
+		}
+
+		.charm_filter{
+			height: 300px;
+			background-color: AntiqueWhite;
+			padding: 5px;
+			border: 2px ridge Gold;
+		}
+
+		select.ability_select{
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 1.1em;
+			width: 100%;
+			background-color: AntiqueWhite;
+			border: none;
+			border: 2px ridge Gold;
+		}
+
+		.card{
+			display: inline-block;
+			vertical-align: top;
+			width:320px;
+			height: 400px;
+			border: 6px ridge Gold;
+			background-color: transparent;
+			position: relative;
+			padding: 5px;
+			margin: 10px;
+		}
+
+		.name{
+			font-weight: bolder;
+			color: DeepSkyBlue;
+			text-align: center;
+			font-size: 1.2em
+		}
+
+		.cost_holder{
+			position: absolute;
+			top: 35px;
+			right: 25px;
+			width: 110px;
+			text-align: center;
+			border: 2px ridge Gold;
+		}
+		.cost_label{
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+
+		div.cost{
+			font-size: 1.1em;
+		}
+
+		.description{
+			border-top: 4px solid Gold;
+			margin: 4px;
+		    font-size: .8em;
+		}
+
+		.page{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding: 2px;
+			border: 2px ridge Gold;
+			background-color: AntiqueWhite
+		}
+		input.page{
+			position: relative;
+			bottom: unset;
+			right: unset;
+		}
+		.delete{
+			position: absolute;
+			top: -5px;
+			right: -5px;
+			color: red;
+		}
+
+		.charm_count{
+			display:inline-block;
+			width: 100%;
+			text-align: center;
+		}
+
+		.charm_icon{
+			position: absolute;
+			background-repeat: no-repeat;
+  			background-size: 150px 150px;
+			top: 185px;
+			left: 95px;
+			height: 150px;
+			width: 150px;
+			opacity: 0.4;
+			z-index: -1;
+		}
+
+		.Archery{
+			background-image: url("img/Archery.png");
+		}
+
+		.Athletics{
+			background-image: url("img/Athletics.png");
+		}
+
+		.Awareness{
+			background-image: url("img/Awareness.png");
+		}
+
+		.Brawl{
+			background-image: url("img/Brawl.png");
+		}
+		.Bureaucracy{
+			background-image: url("img/Bureaucracy.png");
+		}
+
+		.Craft{
+			background-image: url("img/Craft.png");
+		}
+
+		.Dodge{
+			background-image: url("img/Dodge.png");
+		}
+
+		.Integrity{
+			background-image: url("img/Integrity.png");
+		}
+
+		.Investigation{
+			background-image: url("img/Investigation.png");
+		}
+
+		.Larceny{
+			background-image: url("img/Larceny.png");
+		}
+
+		.Linguistics{
+			background-image: url("img/Linguistics.png");
+		}
+
+		.Lore{
+			background-image: url("img/Lore.png");
+		}
+
+		.Medicine{
+			background-image: url("img/Medicine.png");
+		}
+
+		.Melee{
+			background-image: url("img/Melee.png");
+		}
+
+		.Occult{
+			background-image: url("img/Occult.png");
+		}
+
+		.Performance{
+			background-image: url("img/Performance.png");
+		}
+
+		.Presence{
+			background-image: url("img/Presence.png");
+		}
+
+		.Resistance{
+			background-image: url("img/Resistance.png");
+		}
+
+		.Ride{
+			background-image: url("img/Ride.png");
+		}
+
+		.Sail{
+			background-image: url("img/Sail.png");
+		}
+
+		.Socialize{
+			background-image: url("img/Socialize.png");
+		}
+
+		.Stealth{
+			background-image: url("img/Stealth.png");
+		}
+
+		.Survival{
+			background-image: url("img/Survival.png");
+		}
+
+		.Thrown{
+			background-image: url("img/Thrown.png");
+		}
+
+		.War{
+			background-image: url("img/War.png");
+		}
+
+		div#preload{
+			display: none;
+		}
+
+
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/charming.js"></script>
+	<script>
+		var charms = {};
+
+		function loadJSON(callback) {
+		   var xobj = new XMLHttpRequest();
+			   xobj.overrideMimeType("application/json");
+		   xobj.open('GET', 'charms.json', true);
+		   xobj.onreadystatechange = function () {
+				 if (xobj.readyState == 4 && xobj.status == "200") {
+				   // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+				   callback(xobj.responseText);
+				 }
+		   };
+		   xobj.send(null);
+		}
+		function handleCharmJSON(rawJSON){
+			//updating global var charms.
+			charms = JSON.parse(rawJSON);
+			make_charm_selector(charms);
+			show_charms(charms);
+			showPreview(make_blank_card_data());
+		}
+
+		loadJSON(handleCharmJSON);
+
+
+	</script>
+</head>
+
+<body>
+	<div class='selector_container no-print'>
+		<div id='charm_selector' class='charm_selector'>
+			<select id='ability_select' class='ability_select'>
+				<!-- Filled with options from a JSON file through JS -->
+				<!-- make_charm_selector() -->
+			</select>
+			<div id='charm_filter' class='charm_filter'>
+				<div class='charm_count'></div>
+				<div id='search_options' class='search_options'>
+					<div>
+						<label>
+							Full Text Search<br>
+							<input name='search' class='text_search filter'>
+						</label>
+					</div>
+					<div>
+						<label>
+							Name Search<br>
+							<input name='name' class='name_search filter'>
+						</label>
+					</div>
+					<div>
+						<label>
+							Description Search<br>
+							<input name='description' class='name_search filter'>
+						</label>
+					</div>
+					<div>
+						Ability Requirement<br>
+						<table class='checkbox_table'>
+							<thead>
+								<tr>
+									<th><label for='ability_1'>1</label></th>
+									<th><label for='ability_2'>2</label></th>
+									<th><label for='ability_3'>3</label></th>
+									<th><label for='ability_4'>4</label></th>
+									<th><label for='ability_5'>5</label></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type='checkbox' name='ability_req' class='filter filter_checkbox' value=1 checked></td>
+									<td><input type='checkbox' name='ability_req' class='filter filter_checkbox' value=2 checked></td>
+									<td><input type='checkbox' name='ability_req' class='filter filter_checkbox' value=3 checked></td>
+									<td><input type='checkbox' name='ability_req' class='filter filter_checkbox' value=4 checked></td>
+									<td><input type='checkbox' name='ability_req' class='filter filter_checkbox' value=5 checked></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+						Essence Requirement<br>
+						<table class='checkbox_table'>
+							<thead>
+								<tr>
+									<th><label for='essence_1'>1</label></th>
+									<th><label for='essence_2'>2</label></th>
+									<th><label for='essence_3'>3</label></th>
+									<th><label for='essence_4'>4</label></th>
+									<th><label for='essence_5'>5</label></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type='checkbox' name='essence_req' class='filter filter_checkbox' value=1 checked></td>
+									<td><input type='checkbox' name='essence_req' class='filter filter_checkbox' value=2 checked></td>
+									<td><input type='checkbox' name='essence_req' class='filter filter_checkbox' value=3 checked></td>
+									<td><input type='checkbox' name='essence_req' class='filter filter_checkbox' value=4 checked></td>
+									<td><input type='checkbox' name='essence_req' class='filter filter_checkbox' value=5 checked></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<button onClick='show_charms(charms)'>Search</button>
+			</div>
+		</div>
+		<div id='charm_list' class='charm_list'>Loading Charm List...</div>
+		<div id='card_preview' class='card_preview'></div>
+	</div>
+
+	<div id="card_holder"></div>
+
+	<div id='preload'>
+		<img src="img/Archery.png" width="1" height="1"/>
+		<img src="img/Athletics.png" width="1" height="1"/>
+		<img src="img/Awareness.png" width="1" height="1"/>
+		<img src="img/Brawl.png" width="1" height="1"/>
+		<img src="img/Bureaucracy.png" width="1" height="1"/>
+		<img src="img/Craft.png" width="1" height="1"/>
+		<img src="img/Dodge.png" width="1" height="1"/>
+		<img src="img/Integrity.png" width="1" height="1"/>
+		<img src="img/Investigation.png" width="1" height="1"/>
+		<img src="img/Larceny.png" width="1" height="1"/>
+		<img src="img/Linguistics.png" width="1" height="1"/>
+		<img src="img/Lore.png" width="1" height="1"/>
+		<img src="img/Medicine.png" width="1" height="1"/>
+		<img src="img/Melee.png" width="1" height="1"/>
+		<img src="img/Occult.png" width="1" height="1"/>
+		<img src="img/Performance.png" width="1" height="1"/>
+		<img src="img/Presence.png" width="1" height="1"/>
+		<img src="img/Resistance.png" width="1" height="1"/>
+		<img src="img/Ride.png" width="1" height="1"/>
+		<img src="img/Sail.png" width="1" height="1"/>
+		<img src="img/Socialize.png" width="1" height="1"/>
+		<img src="img/Stealth.png" width="1" height="1"/>
+		<img src="img/Survival.png" width="1" height="1"/>
+		<img src="img/Thrown.png" width="1" height="1"/>
+		<img src="img/War.png" width="1" height="1"/>
+	</div>
+
+<script>
+
+
+</script>
+
+</body>
+</html>
