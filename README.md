@@ -1,5 +1,5 @@
 # charming
-A Python parser for Exalted 3e pdfs, and an HTML/JS charm creator. The charm data is not included for obvious copyright reasons. If you're from White Wolf Publishing and would like to see this in action, please get in touch!
+A Python parser for Exalted 3e charm pdfs, and an HTML/JS charm creator. The charm data is not included for obvious copyright reasons. If you're from White Wolf Publishing and would like to see this in action, please get in touch!
 
 This is really split into two parts, and I suppose I could make two repositories, but they're pretty intertwined, so I decided to leave it as one.
 
